@@ -36,6 +36,8 @@ stdenv.mkDerivation (rec {
     # Workaround for https://debbugs.gnu.org/cgi/bugreport.cgi?bug=52330
     # This patch can be dropped, once we upgrade to the next coreutils version after 9.0
     ./fix-arm64-macos.patch
+    # This fixes fsync and fdatasync test on my rpi0
+    ./fix-fsync.patch
   ];
 
   postPatch = ''
