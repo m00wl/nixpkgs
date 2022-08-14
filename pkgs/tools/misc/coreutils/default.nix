@@ -25,8 +25,10 @@ stdenv.mkDerivation (rec {
   version = "9.0";
 
   src = fetchurl {
-    url = "mirror://gnu/coreutils/coreutils-${version}.tar.xz";
-    sha256 = "sha256-zjCs30pBvFuzDdlV6eqnX6IWtOPesIiJ7TJDPHs7l84=";
+    #url = "mirror://gnu/coreutils/coreutils-${version}.tar.xz";
+    #sha256 = "sha256-zjCs30pBvFuzDdlV6eqnX6IWtOPesIiJ7TJDPHs7l84=";
+    url = "https://github.com/m00wl/coreutils/archive/refs/tags/v0.1.tar.gz";
+    sha256 = "sha256-wfbmmb1KYGV97WPWOCS77kFQ6zBNptDvRnOHBmcwASw=";
   };
 
   patches = [
@@ -37,7 +39,7 @@ stdenv.mkDerivation (rec {
     # This patch can be dropped, once we upgrade to the next coreutils version after 9.0
     ./fix-arm64-macos.patch
     # This fixes fsync and fdatasync test on my rpi0
-    ./fix-fsync.patch
+    #./fix-fsync.patch
   ];
 
   postPatch = ''
